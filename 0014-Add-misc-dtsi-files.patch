@@ -1,0 +1,144 @@
+From eda3f05af07c7623d97faf3036985c314f657755 Mon Sep 17 00:00:00 2001
+From: JustSoup321 <brandonboese@protonmail.com>
+Date: Thu, 3 Aug 2023 18:15:17 -0400
+Subject: [PATCH 14/14] Add misc dtsi files
+
+---
+ arch/arm64/boot/dts/mediatek/rt9471.dtsi | 59 ++++++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/trusty.dtsi | 58 +++++++++++++++++++++++
+ 2 files changed, 117 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/rt9471.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/trusty.dtsi
+
+diff --git a/arch/arm64/boot/dts/mediatek/rt9471.dtsi b/arch/arm64/boot/dts/mediatek/rt9471.dtsi
+new file mode 100644
+index 000000000..573ab5e03
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/rt9471.dtsi
+@@ -0,0 +1,59 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ */
++
++&i2c7 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	rt-swchg@53 {
++		compatible = "richtek,swchg";
++		reg = <0x53>;
++		status = "okay";
++
++		rt,intr_gpio = <&pio 42 0x0>; /* GPIO */
++		rt,intr_gpio_num = <42>; /* direct defined GPIO num */
++		/*
++		 * rt,ceb_gpio = <&pio 43 0x0>;
++		 * rt,ceb_gpio_num = <43>;
++		 */
++		rt9471 {
++			/*
++			 * Charger name
++			 * Main charger: primary_chg
++			 * Slave charger: secondary_chg
++			 */
++			chg_name = "primary_chg";
++			chg_alias_name = "rt9471_chg";
++			rm-slave-addr = /bits/ 8 <0x53>;
++			rm-name = "rt9471";
++			interrupt-names = "wdt", "chg_mivr", "vbus_gd",
++					  "bc12_done", "detach", "vac_ov",
++					  "otg_fault", "chg_rdy", "chg_done",
++					  "aicc_done", "pe_done", "chg_tout",
++					  "rechg", "chg_batov";
++			vac_ovp = <14000000>;		/* uV */
++			mivr = <4400000>;		/* uV */
++			aicr = <500000>;		/* uA */
++			cv = <4350000>;			/* uV */
++			ichg = <1000000>;		/* uA */
++			ieoc = <200000>;		/* uA */
++			safe_tmr = <10>;		/* hour */
++			wdt = <40>;			/* sec */
++			/*
++			 * 0: MIVR register
++			 * 1: MIVR = VBAT + 200mV
++			 * 2: MIVR = VBAT + 250mV
++			 * >= 3: MIVR = VBAT + 300mV
++			 */
++			mivr_track = <0>;
++			en_safe_tmr;
++			en_te;
++			/* en_jeita; */
++			/* ceb_invert; */
++			/* dis_i2c_tout; */
++			en_qon_rst;
++			/* auto_aicr; */
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/trusty.dtsi b/arch/arm64/boot/dts/mediatek/trusty.dtsi
+new file mode 100644
+index 000000000..960feea61
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/trusty.dtsi
+@@ -0,0 +1,58 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ */
++
++/ {
++	trusty {
++		compatible = "android,trusty-smc-v1";
++		ranges;
++		#address-cells = <2>;
++		#size-cells = <2>;
++		tee-id = <0>;
++		tee-name = "trusty";
++
++		mtee {
++			compatible = "mediatek,trusty-mtee-v1";
++		};
++
++		gz-main {
++			compatible = "mediatek,trusty-gz";
++		};
++
++		trusty-irq {
++			compatible = "android,trusty-irq-v1";
++			ppi-interrupt-parent = <&gic>;
++		};
++
++		trusty-virtio {
++			compatible = "android,trusty-virtio-v1";
++		};
++
++		trusty-gz-log {
++			compatible = "android,trusty-gz-log-v1";
++		};
++	};
++
++	nebula {
++		compatible = "android,nebula-smc-v1";
++		ranges;
++		#address-cells = <2>;
++		#size-cells = <2>;
++		tee-id = <1>;
++		tee-name = "nebula";
++
++		nebula-virtio {
++			compatible = "android,nebula-virtio-v1";
++		};
++
++		nebula-irq {
++			compatible = "android,nebula-irq-v1";
++			ppi-interrupt-parent = <&gic>;
++		};
++
++		nebula-gz-log {
++			compatible = "android,nebula-gz-log-v1";
++		};
++	};
++};
+-- 
+2.41.0
+

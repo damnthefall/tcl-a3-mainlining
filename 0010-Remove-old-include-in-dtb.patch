@@ -1,0 +1,24 @@
+From 8f344fe17bb6b4bef4eec1466ec5599f3184dd80 Mon Sep 17 00:00:00 2001
+From: JustSoup321 <brandonboese@protonmail.com>
+Date: Thu, 3 Aug 2023 18:05:59 -0400
+Subject: [PATCH 10/14] Remove old include in dtb
+
+---
+ arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+index fd056b097..2572079c7 100644
+--- a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
++++ b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+@@ -11,7 +11,6 @@
+ #include <dt-bindings/clock/mt6765-clk.h>
+ #include <dt-bindings/iio/mt635x-auxadc.h>
+ #include <dt-bindings/gce/mt6765-gce.h>
+-#include <generated/autoconf.h>
+ #include <dt-bindings/soc/mediatek,boot-mode.h>
+ 
+ /dts-v1/;
+-- 
+2.41.0
+
