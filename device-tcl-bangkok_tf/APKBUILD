@@ -1,0 +1,31 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-tcl-bangkok_tf
+pkgdesc="TCL A3"
+pkgver=0.1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-postmarketos-mediatek-mt6762
+	postmarketos-base
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	modules-initfs
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+86aa7bd20af95584e61a5abe34e4aa0a7fd8b082cfb9175f1f9d46827d61a6bb5376b9ea91e372ed7be30cede69253bc97691872b4f9358fe15619db9ae2a1af  deviceinfo
+03cab135b4d8d249724a36e30af94404ad56fb14f30819838a2fa35a84ec4f65152a72db7534c97fcfe0aa4de16c112f556f799f66ec8134f76aba84efc3eafa  modules-initfs
+"
