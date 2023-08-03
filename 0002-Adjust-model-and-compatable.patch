@@ -1,0 +1,27 @@
+From 187012e40c4fe6922e20b403ee2fdb12201bb804 Mon Sep 17 00:00:00 2001
+From: JustSoup321 <brandonboese@protonmail.com>
+Date: Thu, 3 Aug 2023 15:09:23 -0400
+Subject: [PATCH 2/2] Adjust model and compatable
+
+---
+ .../boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts      | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+index 6bd6d0bed..0684874c5 100644
+--- a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
++++ b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+@@ -17,8 +17,8 @@
+ /dts-v1/;
+ 
+ / {
+-	model = "MT6765";
+-	compatible = "mediatek,MT6765";
++	model = "TCL A3(bangkok_tf)";
++	compatible = "tcl,tcl-bangkok_tf", "mediatek,mt6765";
+ 	interrupt-parent = <&sysirq>;
+ 	#address-cells = <2>;
+ 	#size-cells = <2>;
+-- 
+2.41.0
+
