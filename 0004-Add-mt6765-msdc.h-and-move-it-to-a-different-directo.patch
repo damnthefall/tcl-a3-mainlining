@@ -1,0 +1,70 @@
+From 2c45caf51fdb16e9496e628cf6a8ca566a539242 Mon Sep 17 00:00:00 2001
+From: JustSoup321 <brandonboese@protonmail.com>
+Date: Thu, 3 Aug 2023 15:24:46 -0400
+Subject: [PATCH 4/4] Add mt6765 msdc.h and move it to a different directory
+
+---
+ .../mediatek-mt6762-tcl-bangkok_tf.dts        |  2 +-
+ include/dt-bindings/pinctrl/mt6765-msdc.h     | 37 +++++++++++++++++++
+ 2 files changed, 38 insertions(+), 1 deletion(-)
+ create mode 100644 include/dt-bindings/pinctrl/mt6765-msdc.h
+
+diff --git a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+index 0684874c5..fd056b097 100644
+--- a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
++++ b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+@@ -7,7 +7,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/mt6765-pinfunc.h>
+-#include <dt-bindings/mmc/mt6765-msdc.h>
++#include <dt-bindings/pinctrl/mt6765-msdc.h>
+ #include <dt-bindings/clock/mt6765-clk.h>
+ #include <dt-bindings/iio/mt635x-auxadc.h>
+ #include <dt-bindings/gce/mt6765-gce.h>
+diff --git a/include/dt-bindings/pinctrl/mt6765-msdc.h b/include/dt-bindings/pinctrl/mt6765-msdc.h
+new file mode 100644
+index 000000000..4d44915fc
+--- /dev/null
++++ b/include/dt-bindings/pinctrl/mt6765-msdc.h
+@@ -0,0 +1,37 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ * Author: Owen Chen <owen.chen@mediatek.com>
++ */
++
++#ifndef _DT_BINDINGS_MMC_MT6765_H
++#define _DT_BINDINGS_MMC_MT6765_H
++
++#define MSDC_EMMC               (0)
++#define MSDC_SD                 (1)
++#define MSDC_SDIO               (2)
++
++#define MSDC_CD_HIGH            (1)
++#define MSDC_CD_LOW             (0)
++
++#define MSDC0_CLKSRC_26MHZ      (0)
++#define MSDC0_CLKSRC_400MHZ     (1)
++
++#define MSDC1_CLKSRC_26MHZ      (0)
++#define MSDC1_CLKSRC_208MHZ     (1)
++#define MSDC1_CLKSRC_200MHZ     (2)
++
++#define MSDC3_CLKSRC_26MHZ      (0)
++#define MSDC3_CLKSRC_208MHZ     (1)
++#define MSDC3_CLKSRC_400MHZ     (2)
++#define MSDC3_CLKSRC_156MHZ     (3)
++#define MSDC3_CLKSRC_182MHZ     (4)
++#define MSDC3_CLKSRC_312MHZ     (5)
++#define MSDC3_CLKSRC_364MHZ     (6)
++#define MSDC3_CLKSRC_200MHZ     (7)
++
++#define MSDC_SMPL_RISING        (0)
++#define MSDC_SMPL_FALLING       (1)
++#define MSDC_SMPL_SEPARATE      (2)
++
++#endif /* _DT_BINDINGS_MMC_MT6765_H */
+-- 
+2.41.0
+
