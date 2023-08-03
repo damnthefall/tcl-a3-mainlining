@@ -1,0 +1,36 @@
+From 54b3e087c85a0e65e832188b5d0ba45ad98366a5 Mon Sep 17 00:00:00 2001
+From: JustSoup321 <brandonboese@protonmail.com>
+Date: Thu, 3 Aug 2023 15:40:14 -0400
+Subject: [PATCH 8/8] Add mediatek,boot-mode.h
+
+---
+ include/dt-bindings/soc/mediatek,boot-mode.h | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+ create mode 100644 include/dt-bindings/soc/mediatek,boot-mode.h
+
+diff --git a/include/dt-bindings/soc/mediatek,boot-mode.h b/include/dt-bindings/soc/mediatek,boot-mode.h
+new file mode 100644
+index 000000000..f7d51072a
+--- /dev/null
++++ b/include/dt-bindings/soc/mediatek,boot-mode.h
+@@ -0,0 +1,17 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ */
++#ifndef __MEDIATEK_BOOT_MODE_H
++#define __MEDIATEK_BOOT_MODE_H
++
++#define BOOT_CHARGER	1
++#define BOOT_RECOVERY	2
++#define BOOT_BOOTLOADER	3
++#define BOOT_DM_VERITY	4
++#define BOOT_KPOC	5
++#define BOOT_DDR_RSVD	6
++#define BOOT_META	7
++#define BOOT_RPMBPK	8
++
++#endif
+-- 
+2.41.0
+
