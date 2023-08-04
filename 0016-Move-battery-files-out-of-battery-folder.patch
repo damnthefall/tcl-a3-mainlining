@@ -1,0 +1,37 @@
+From ab2b2ba4466108e06064265c94218914ab850aa1 Mon Sep 17 00:00:00 2001
+From: JustSoup321 <brandonboese@protonmail.com>
+Date: Fri, 4 Aug 2023 00:09:13 -0400
+Subject: [PATCH 16/16] Move battery files out of battery folder
+
+---
+ arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts | 2 +-
+ .../dts/mediatek/{bat_setting => }/mt6765_battery_prop_ext.dtsi | 0
+ .../mediatek/{bat_setting => }/mt6765_battery_table_ext.dtsi    | 0
+ 3 files changed, 1 insertion(+), 1 deletion(-)
+ rename arch/arm64/boot/dts/mediatek/{bat_setting => }/mt6765_battery_prop_ext.dtsi (100%)
+ rename arch/arm64/boot/dts/mediatek/{bat_setting => }/mt6765_battery_table_ext.dtsi (100%)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+index d93ed4aee..83fd25901 100644
+--- a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
++++ b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+@@ -3823,7 +3823,7 @@ dram_ctrl {
+ 
+ #include "cust_mt6765_msdc.dtsi"
+ #include "mt6357.dtsi"
+-#include "bat_setting/mt6765_battery_prop.dtsi"
++#include "mt6765_battery_prop.dtsi"
+ #include "mt6370.dtsi"
+ #include "mt6370_pd.dtsi"
+ #ifdef CONFIG_CHARGER_RT9471
+diff --git a/arch/arm64/boot/dts/mediatek/bat_setting/mt6765_battery_prop_ext.dtsi b/arch/arm64/boot/dts/mediatek/mt6765_battery_prop_ext.dtsi
+similarity index 100%
+rename from arch/arm64/boot/dts/mediatek/bat_setting/mt6765_battery_prop_ext.dtsi
+rename to arch/arm64/boot/dts/mediatek/mt6765_battery_prop_ext.dtsi
+diff --git a/arch/arm64/boot/dts/mediatek/bat_setting/mt6765_battery_table_ext.dtsi b/arch/arm64/boot/dts/mediatek/mt6765_battery_table_ext.dtsi
+similarity index 100%
+rename from arch/arm64/boot/dts/mediatek/bat_setting/mt6765_battery_table_ext.dtsi
+rename to arch/arm64/boot/dts/mediatek/mt6765_battery_table_ext.dtsi
+-- 
+2.41.0
+
