@@ -1,0 +1,41 @@
+From b930075e4b6667dbb620003780f6ddb97bc7409b Mon Sep 17 00:00:00 2001
+From: JustSoup321 <brandonboese@protonmail.com>
+Date: Fri, 4 Aug 2023 00:05:35 -0400
+Subject: [PATCH 15/15] Fix includes
+
+---
+ arch/arm64/boot/dts/mediatek/cust_mt6765_msdc.dtsi |  0
+ .../mediatek/mediatek-mt6762-tcl-bangkok_tf.dts    | 14 +++++++-------
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+ mode change 100644 => 100755 arch/arm64/boot/dts/mediatek/cust_mt6765_msdc.dtsi
+
+diff --git a/arch/arm64/boot/dts/mediatek/cust_mt6765_msdc.dtsi b/arch/arm64/boot/dts/mediatek/cust_mt6765_msdc.dtsi
+old mode 100644
+new mode 100755
+diff --git a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+index 2572079c7..d93ed4aee 100644
+--- a/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
++++ b/arch/arm64/boot/dts/mediatek/mediatek-mt6762-tcl-bangkok_tf.dts
+@@ -3821,12 +3821,12 @@ dram_ctrl {
+ 
+ };
+ 
+-#include "mediatek/cust_mt6765_msdc.dtsi"
+-#include "mediatek/mt6357.dtsi"
+-#include "mediatek/bat_setting/mt6765_battery_prop.dtsi"
+-#include "mediatek/mt6370.dtsi"
+-#include "mediatek/mt6370_pd.dtsi"
++#include "cust_mt6765_msdc.dtsi"
++#include "mt6357.dtsi"
++#include "bat_setting/mt6765_battery_prop.dtsi"
++#include "mt6370.dtsi"
++#include "mt6370_pd.dtsi"
+ #ifdef CONFIG_CHARGER_RT9471
+-#include "mediatek/rt9471.dtsi"
++#include "rt9471.dtsi"
+ #endif
+-#include "mediatek/trusty.dtsi"
++#include "trusty.dtsi"
+-- 
+2.41.0
+
